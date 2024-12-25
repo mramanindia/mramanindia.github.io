@@ -1,840 +1,219 @@
-<!-- <!DOCTYPE html> -->
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width initial-scale=1" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aman I - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9fafb;
+            color: #333;
+        }
 
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-PGZH8HT');</script>
-  <!-- End Google Tag Manager -->
+        header {
+            background-color: #4a5568;
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-  <!-- Materialize - Compiled and minified CSS-->
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css" />
-  <!-- Font Awesome Icon - CSS-->
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
-  <!-- Custom Styles-->
-  <link rel="stylesheet" href="/assets/css/style.css" />
-  <title>Aman India - Software Developer</title>
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126939217-2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
 
-    gtag('config', 'UA-126939217-2');
-  </script>
+        header nav a:hover {
+            color: #a0aec0;
+        }
 
-  <!-- Open Graph-->
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Aman India | Software Developer" />
-  <meta property="og:description" content="Software Developer" />
-  <meta property="og:url" content="https://mramanindia.github.io/" />
-  <meta property="og:site_name" content="Aman India | Software Developer" />
-  <meta property="article:publisher" content="https://mramanindia.github.io/" />
-  <meta property="og:image" content="https://mramanindia.github.io/examples/preview.JPG" />
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:site" content="@mramanindia" />
-  <meta name="twitter:title" content="Software Engineer | Engineering Life" />
-  <meta name="twitter:description" content="Software Developer" />
-  <meta name="twitter:url" content="https://twitter.com/mramanindia" />
-  <meta name="author" content="Aman India" />
-  <meta name="description" content=" Engineering Software and Life" />
-  <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicon/apple-icon-57x57.png" />
-  <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicon/apple-icon-60x60.png" />
-  <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicon/apple-icon-72x72.png" />
-  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicon/apple-icon-76x76.png" />
-  <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicon/apple-icon-114x114.png" />
-  <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicon/apple-icon-120x120.png" />
-  <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicon/apple-icon-144x144.png" />
-  <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicon/apple-icon-152x152.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-icon-180x180.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon/android-icon-192x192.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon/favicon-96x96.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon/favicon-16x16.png" />
-  <link rel="manifest" href="/assets/img/favicon/manifest.json" />
-  <meta name="msapplication-TileColor" content="#ffffff" />
-  <meta name="msapplication-TileImage" content="/assets/img/favicon/ms-icon-144x144.png" />
-  <meta name="theme-color" content="#ffffff" />
-  <meta name="robots" content="index, follow" />
-  <!-- Google Site Verification for indexing -->
-  <meta name="google-site-verification" content="_qxK8tePiU2fhnwlwnJ7pkDFnj1k2EiKq_cYGy1Cb84" />
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .intro h2 {
+            margin: 0.5rem 0;
+            color: #2d3748;
+            font-size: 2rem;
+        }
+
+        .intro p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h3 {
+            color: #2d3748;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #a0aec0;
+            padding-bottom: 0.5rem;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        ul.visible {
+            display: grid;
+        }
+
+        ul li {
+            background-color: #edf2f7;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        ul li::before {
+            content: '\2022';
+            color: #4a5568;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+
+        .contact a {
+            color: #3182ce;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact a:hover {
+            color: #2b6cb0;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #4a5568;
+            color: white;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .toggle-button {
+            background-color: #4a5568;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .toggle-button:hover {
+            background-color: #2d3748;
+        }
+    </style>
+    <script>
+        function toggleSkills() {
+            const skillsList = document.getElementById('skills-list');
+            skillsList.classList.toggle('visible');
+        }
+    </script>
 </head>
-
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGZH8HT"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
-  
-  <!-- Navigation Menu-->
-  <!-- Nav class 1 -->
-  <nav class="hide-on-small-only">
-    <ul class="side-nav fixed section table-of-contents">
+    <header>
+        <h1>Aman I</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-      <li class="logo">
-        <a id="logo-container" aria-label="Navigate to the beginning of the page" href="#intro"
-          class="brand-logo teal-text">
-          <img src="/assets/img/passport-new.jpg" class="circle img-responsive  profile-pic bl-text" alt="avatar">
-        </a>
-      </li>
+    <div class="container">
+        <section class="intro" id="about">
+            <h2>Hello there,</h2>
+            <p>I am a Curious engineer curating wonders. Technology fascinates me, from automation to generation. Things are changing rapidly, and I am trying to add value in the process.</p>
+            <p>Beyond engineering, I enjoy delving into philosophy and watching documentaries/case studies. These interests help me stay curious and inspired.</p>
+        </section>
 
-      <li class="bold">
-        <a aria-label="Navigate to the About section" href="#about" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-person small"></i><span>About</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Navigate to the Experience section" href="#experience"
-          class="waves-effect waves-dark teal-text"><i
-            class="mdi-action-trending-up small"></i><span>Experience</span></a>
-      </li>
+        <section class="skills" id="skills">
+            <h3>Skills</h3>
+            <button class="toggle-button" onclick="toggleSkills()">Show/Hide Skills</button>
+            <ul id="skills-list">
+                <li>Python</li>
+                <li>LLMs - RAGs</li>
+                <li>Full Stack Development</li>
+                <li>Flask</li>
+                <li>Pandas</li>
+                <li>Microservices</li>
+                <li>MongoDB</li>
+                <li>MySQL</li>
+                <li>OpenSearch</li>
+                <li>Linux</li>
+                <li>Elasticsearch</li>
+                <li>Redis</li>
+                <li>Kubernetes</li>
+                <li>Docker</li>
+                <li>AWS</li>
+                <li>MinIO</li>
+            </ul>
+        </section>
 
-      <li class="bold">
-        <!-- mdi-av-web small
-             mdi-av-my-library-books small-->
-        <a aria-label="Navigate to the Projects section" href="#projects" class="waves-effect waves-dark teal-text"><i
-            class="mdi-av-my-library-books small"></i><span>Projects</span></a>
-      </li>
-
-      <li class="bold">
-        <!--
-        ICONS:
-        mdi-action-assessment
-        mdi-social-poll
-        mdi-av-equalizer
-        -->
-        <a aria-label="Navigate to the Skills section" href="#skills" class="waves-effect waves-dark teal-text"><i
-            class="mdi-action-assessment small"></i><span>Skills</span></a>
-      </li>
-      
-      <li class="bold">
-        <!--
-        ICONS:
-        -->
-        <a aria-label="Navigate to the Education section" href="#education" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-school small"></i><span>Education</span></a>
-      </li>
-
-      <li class="bold">
-        <!-- 
-        1. mdi-communication-contacts
-        2. mdi-content-mail
-        3. mdi-communication-email
-        -->
-        <a aria-label="Navigate to the Contact section" href="#contact" class="waves-effect waves-dark teal-text"><i
-            class="mdi-content-mail small"></i><span>Contact</span></a>
-      </li>
-
-      <li class="bold">
-        <!--
-        ICONS:
-        1. mdi-action-description
-        2. mdi-file-folder
-        3. mdi-file-folder-open
-        4. mdi-file-attachment
-        5. mdi-file-folder-shared
-        -->
-        <!-- <a aria-label="Open Aman's resume in a new tab" href="#resume" target="_blank"
-          onclick="window.open('https://drive.google.com/file/d/1vYi-bMyIsZPve0x_clxY8xsDtiHiOMd3/view?usp=sharing')"
-          class="waves-effect waves-dark teal-text"><i class="mdi-file-folder-open small"></i><span>Resume</span></a> -->
-        <a aria-label="Open Aman's resume in a new tab" href="https://mramanindia.github.io/assets/resume/Amans_ml_resume.pdf" target="_blank"
-        class="waves-effect waves-dark teal-text"><i class="mdi-file-folder-open small"></i><span>Resume</span></a>  
-      </li>
-    </ul>
-  </nav>
-
-  <!-- Nav class 2 -->
-  <nav class="hide-on-large only trigger z-depth-1">
-    <a aria-label="Toggle visibility of the mobile navbar" href="#" data-activates="slide-out"
-      class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-    <div class="name-title">
-      <a id="name" aria-label="Navigate to the beginning of the page" href="#" class="teal-text">Aman
-        India</a><span class="black-text">Software Developer</span>
-    </div>
-  </nav>
-
-  <!-- Nav class 3 -->
-  <nav class="hide-on-large only">
-    <ul id="slide-out" class="side-nav">
-      <li class="bold">
-        <a aria-label="Navigate to the About section" href="#about" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-person small"></i><span>About</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Navigate to the Experience section" href="#experience"
-          class="waves-effect waves-dark teal-text"><i
-            class="mdi-action-trending-up small"></i><span>Experience</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Navigate to the Projects section" href="#projects" class="waves-effect waves-dark teal-text"><i
-            class="mdi-av-my-library-books small"></i><span>Projects</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Navigate to the Skills section" href="#skills" class="waves-effect waves-dark teal-text"><i
-            class="mdi-action-assessment small"></i><span>Skills</span></a>
-      </li>
-
-      <li class="bold">
-        <a aria-label="Navigate to the Education section" href="#education" class="waves-effect waves-dark teal-text"><i
-            class="mdi-social-school small"></i><span>Education</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Navigate to the Contact section" href="#contact" class="waves-effect waves-dark teal-text"><i
-            class="mdi-content-mail small"></i><span>Contact</span></a>
-      </li>
-      <li class="bold">
-        <a aria-label="Open Aman's Resume in a new tab"
-          href="https://drive.google.com/drive/folders/1Qm1xcxQD0SlIyh4wRW9O0uG1NLBYqoZI?usp=sharing" target="_blank"
-          class="waves-effect waves-dark teal-text"><i class="mdi-file-folder-open small"></i><span>Resume</span></a>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- Main Content-->
-  <main>
-    <!-- First Section: Heading lines and image -->
-    <section id="intro" class="section scrollspy full-height">
-      <div class="overlay"></div>
-      <div class="container">
-        <div class="col-md-9">
-          <div class="content section-padding valign" style="margin-left: 10%; margin-top: 50px;">
-            <div class="caption">
-              <h2>Hey there, I'm <span class="bold" style="font-weight: 300; color:#84a5f3" >Aman India!</span></h2>
-              <p>Let's connect for a coffee for the story of my Surname : )</p>
-              <p style="color:#fff">I'm  <span class="typing" style="font-weight: 300; color:#7889e6"></span></p>
-              <!-- <h5 style="color:#00796b">A <span class="typing" style="font-weight: 300; color:#fff"></span></h5> -->
-              <div class="hide-on-small-only">
-              <img alt="" src="/assets/img/aman_pic.jpg" align ="right" width="300" height="400"style = "margin-top: 5px; margin-right: 5px;"class="responsive-img" >
-  </div>
-    <div>
-             
-      <p>I am an AI Engineer working with LLM's and chatbots. Currently associated with Yellow.ai, a pioneer company in LLM-based chatbot development.</p>
-      <p>BTech CSE23 - Lovely Professional University, Punjab</p>
-            </div>  
-            <div class="social">
-              <a href="http://linkedin.com/in/mramanindia" target="_blank">
-                <button class="icon-btn linkedin">
-                  <i class="fa fa-linkedin"></i>
-                </button>
-              </a>
-              <a href="https://github.com/mramanindia/" target="_blank">
-                <button class="icon-btn github">
-                  <i class="fa fa-github"></i>
-                </button>
-              </a>
-              <a href="https://twitter.com/mramanindia/" target="_blank">
-                <button class="icon-btn twitter">
-                  <i class="fa fa-twitter"></i>
-                </button>
-              </a>
-
-              <!-- <a href="https://angel.co/u/Aman_bhogayata" target="_blank">
-                <button class="icon-btn angellist">
-                  <i class="fa fa-angellist"></i>
-                </button>
-              </a> -->
-
-              <!-- <a href="http://linkedin.com/in/Amanbhogayata" target="_blank">
-                  <span class="fa-stack fa-lg">
-                    <i class="fa fa-circle fa-stack-2x"></i>
-                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-
-                  </span>
-              </a> -->
-            </div>
-            <div class='buttons'>
-              <a href="#about" class="readme">Read More</a>
-              <a href="#contact" class="contactme">Contact Me</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </section>
-
-    <!-- Second Section: About -->
-    <section id="about" class="section scrollspy">
-      <h3 class="page-title white-text teal">About</h3>
-      <div class="container flow-text">
-        <!-- <blockquote>
-          <h2>
-            A Software Developer with a passion for Backend Development and Artificial Intelligence.
-
-          </h2>
-        </blockquote> -->        
-        <p>
-          I am a young professional on a mission to add value in the life of beings.</br>
-        </br>
-          Over the journey,</br>
-
-          I have worked with diverse tools and technologies, Profoundly in Fullstack development using Java. Added further, I have a good history in R&D as I have a love for learning impactful technologies.
-<p>       Moreover,
-          I am fascinated by Artificial intelligence and I have great challenging projects in the same over my GitHub profile covering Computer Vision, NLP, and Data Science problems.
-
-        </p>
-        </p>
-        <p>
-          <b>Skill Set</b>
-
-   
-
-
-          <ul>
-            <li><b>Languages:</b> Java, Python, C++, JavaScript, TypeScript, R-Programming, HTML5, CSS3, Bash</li>
-            <li><b>Expertise:</b> Full-Stack Development, Web Services, Data structures and Algorithm, Computer Vision</li>
-            <li><b>Frameworks:</b> Spring - SpringBoot - Webflux, Node.js,Vue, Keras, TensorFlow, PyTorch</li>
-            <li><b>Databases:</b> Elasticsearch, MongoDB, DB2, MySQL, Minio - Amazon s3 </li>
-            <li><b>Technologies:</b> AWS, GCP, Rest API’s, Hadoop, Hive, Apache spark, Apache Flink, Linux, Dockers, Kubernetes, Git, GitHub, Bit-Bucket, Jira, Agile methedologies and others.</li>
-          </ul>
-          
-        </p>
-          
-        <!-- <p>
-          
-          Detail-oriented Software Developer with professional experience in Backend Development, Machine Learning, Computer Vision. I am adept in Python, Django, Flask, SQL, Machine Learning, Computer Vision.           
-        </p> -->
-        <!-- <p>
-          Another Paragraph
-        </p>  -->
-        <!-- <p>
-        <strong>Current Focus</strong>:&nbsp;<a aria-label="Navigate to the Inclusive Design Patterns homepage"
-          href="https://www.smashingmagazine.com/inclusive-design-patterns/">Accessibility</a>&nbsp;//&nbsp;<a
-          aria-label="Navigate to the Full Stack React homepage"
-          href="https://www.fullstackreact.com/">React</a>&nbsp;//&nbsp;<a
-          aria-label='Navigate to the article "Scalable CSS"'
-          href="https://mrmrs.github.io/writing/2016/03/24/scalable-css/">Design Systems</a>
-        </p> -->
-
-      </div>
-    </section>
-
-
-    <!-- Third Section: Experience -->
-    <section id="experience" class="section scrollspy">
-      <h3 class="page-title white-text teal">Experience</h3>
-      <div class="container">
-
-        <!-- Latest Experience -->
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col s12 m2">
-                <a href="https://sixthsense.rakuten.com/" target="_blank"><img alt="Zhiffy logo"
-                    src="/assets/img/rakuten_small.jpg" class="responsive-img center-block" /></a>
-              </div>
-              <!-- <div class="col s12 m10"> -->
-              <div class="col s12 m10">
-                <p>
-                  <span class="card-title"><a href="https://sixthsense.rakuten.com/" target="_blank"
-                      class="teal-text hoverline">Rakuten - SixthSense Observability</a></span>
-                </p>
-              </div>
-            </div>
-            <div class="role brown-text text-darken-2">Software Engineer</div>
+        <section class="experience" id="experience">
+            <h3>Experience</h3>
             <ul>
-              <li>&bull; Key contributor for SixthSense&rsquo;s Log Monitoring Service via developing RESTful APIs for OpenSearch ILM policy, Log Rules, and Queries. Also involved in bug fixes, performance optimization, and meeting client needs.&nbsp;</li>
-              <li>&bull; Achieved significant improvement in query performance, optimizing from 2.5s to 30ms using Presto query engine caching with redis on Elasticsearch &amp; Amazon S3.&nbsp;</li>
-              <li>&bull; Conducted POC on Hadoop Ecosystem (Hadoop, Hive, Spark), SQL on Big Data (Hive, Trino, Drill), Real-time Processing (Kafka, Flink), Specialized Tools (Druid, RaftorX, Allexio, Hazelcast, Iceberg) - &quot;Rudimentary understanding&quot;&nbsp;</li>
-              <li>&bull; Skillset: Fullstack Development, Java -SpringBoot, Vue.js, GraphQl, Restful API&rsquo;s, MySQL, MongoDB, Elasticsearch, AWS, Docker, Linux</li>
-          </ul>
-          </div>
-          <div class="card-action">
-            <span>Jan 2023 - Jan 2024 | Bengaluru, India</span>
-          </div>
-        </div>
+                <li><strong>Machine Learning Engineer</strong> at Yellow.ai (Remote)</li>
+                <li><strong>Software Engineer</strong> at Rakuten India (Bengaluru, India)</li>
+            </ul>
+        </section>
 
-        
-        <div class="card">
-          <div class="card-content">
-            <div class="row">
-              <div class="col s12 m2">
-                <a href="https://seekright.com/" target="_blank"><img alt="Takeleap logo"
-                    src="/assets/img/takeleap_logo.jpg" class="responsive-img center-block" /></a>
-              </div>
-              <!-- <div class="col s12 m10"> -->
-              <div class="col s12 m10">
-                <p>
-                  <span class="card-title"><a href="https://seekright.com/" target="_blank"
-                      class="teal-text hoverline">Takeleap - SeekRight</a></span>
-                </p>
-              </div>
-            </div>
-            <div class="role brown-text text-darken-2">Machine Learning Intern</div>
-            <ul>
-              <li>Enhanced SeekRight product efficiency by 4% through feature enhancements, Optimizations, Deep learning model tuning, and Bug fixes.</li>
-              <li>Enhanced Support team productivity by almost 80% through developing 2 multipurpose data management Tools.</li>
-              <li>Led various POC projects, focusing on object detection and tracking, Identification systems, and addressing security challenges.</li>
-              <li>Skillset: Computer Vision, Machine Learning, Deep Learning (CNN, RNN, LSTM, GANs, and others), ImagePre/Post-processing, OpenCV, Python, PyTorch, Tensorflow, Linux, PySimpleGUI, MySQL and more.</li>
-              </ul>
-          </div>
-          <div class="card-action">
-            <span>April 2022 - July 2022 | Bengaluru, India</span>
-          </div>
-        </div>
-
-       
-    </section>
-
-    <!-- Fourth Section: Projects -->
-    <section id="projects" class="section scrollspy">
-      <h3 class="page-title white-text teal">Projects</h3>
-      <div class="container">
-        <div class="row">
-
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="music streaming app" src="/assets/img/Ricequality.png" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Rice grains Quality Analysis<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  Freelancing project: Build for Rice mill owners in Identifying Rice Quality for FCI.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> Python, OpenCv, Image processing</li>
-                  <li>Indentifying grains size, Broken grains count, grains texture and impurities.</li>
-                  <li>Solved major problem of Touching rice grains.</li>
-                  <li>Deployed to Mill owner for Food corporation of India.</li>
-                  
-
-
-                </ul>
-                <div class="card-action">
-                  
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/mramanindia/Rice_grains_Analysis"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="quiz app" src="/assets/img/Retail.png" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline"> Retail Visual Intelligence and Analytics<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  Analytics of product in mart based on shelf images
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b>OpenCv, Deep Neural Networks - Resnet, Yolo V5, Python, Pandas, Notebook</li>
-                  <li>Identifying products from shelves, position and quantity analysis</li>
-                  <li>Visual Analytics</li>
-                  <li>2 Approach - Feature Matching and DNN</li>
-
-                </ul>
-                <div class="card-action">
-                 
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/mramanindia/tweets_entities_extraction_and_sentiments_analysis"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 1. Django Project -->
-          <!-- <div class="col s12 m6 l6">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="django web app" src="/assets/img/project-library-logo.png" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Local Library Web-App<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  A web-app that creates an online catalog for a small local library, where users can browse available books and manage their accounts.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b> HTML, CSS, Bootstrap, SQLite, Django, Heroku</li>
-                  <li>Users can view list and detail information for books and authors.</li>
-                  <li>Admin users can create and manage models.</li>
-                  <li>Librarians can renew reserved books.</li>
-
-                </ul>
-                <div class="card-action">
-                  <a aria-label="Visit " href="https://django-local-lib.herokuapp.com" target="_blank" data-position="top"
-                    data-tooltip="View Online"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-external-link"></i></a>
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/mramanindia/django-local-library"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- Flask Project -->
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="Screenshot of web app" src="/assets/img/tweet.png"
-                style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Tweet Sentiment Analysis<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  Sentiment analysis of the user towards <b>each entity</b> in the tweet.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title teal-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li><b>Tools:</b>Technology used: NLP, Data Pre-processing, Entities Extraction, TextBlob, Google Translator API and others.</li>
-                  <li>Major chunk - Extraction of right entities</li>
-                  <li>Tweet language conversion to english and operations</li>
-
-
-                </ul>
-                <div class="card-action">
-                
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/mramanindia/tweets_entities_extraction_and_sentiments_analysis"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        
-          <!-- Verification chained -->
-          <div class="col s12 m6 l4">
-            <div class="card medium">
-              <div class="card-image waves-effect waves-block waves-light">
-                <img alt="Screenshot of  web app" src="/assets/img/verification.png" style="height: 100%; width: 100%" class="activator" />
-              </div>
-              <div class="card-content">
-                <span class="card-title activator teal-text hoverline">Verification Chained<i
-                    class="mdi-navigation-more-vert right"></i></span>
-                <p>
-                  Documents Verification System using Blockchain and Artificial Intellegence.
-                </p>
-              </div>
-              <div class="card-reveal">
-                <!-- TODO: change this -- only close button -->
-                <!-- <span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span> -->
-                <span class="card-title brown-text"><small>Accomplishments</small><i
-                    class="mdi-navigation-close right"></i></span>
-                <ul>
-                  <li>Tools: Solana, Blockchain, OCR, Python</li>
-                  <li>OCR for text recognition over the documents.</li>
-                  <li>Extracting key inputs from the documents and saving further into blockchain for verification.</li>
-
-                </ul>
-                <!-- TODO: UPLOAD THIS PROJECT ON GITHUB -->
-                <div class="card-action">
-                  <a aria-label="Visit the GitHub repo for  project" href="https://github.com/mramanindia/Verification-chained"
-                    target="_blank" data-position="top" data-tooltip="View Source"
-                    class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-                      class="fa fa-github"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          
-
-          
-    </section>
-
-    <!-- Fifth Section: Skills -->
-    <section id="skills" class="section scrollspy">
-      <h3 class="page-title white-text teal">Skills</h3>
-      <div class="container">
-        <!-- Languages and Databases -->
-        <div class="card">
-          <div class="card-content">
-            <h4 class="brown-text light">Programming</h4>
-            <div class="row text-center">
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/Java-Logo.png" class="responsive-img" />Java
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/python-logo-1-300x300.jpg" class="responsive-img" />Python
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/cplus.webp" class="responsive-img" />C++
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/html5-300x300.jpg" class="responsive-img" />HTML5
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/css3-300x300.jpg" class="responsive-img" />CSS3
-              </div>
-             
-            </div>
-          </div>
-        </div>
-
-        <!-- Frameworks -->
-        <div class="card">
-          <div class="card-content">
-            <h4 class="brown-text light">Frameworks</h4>
-            <div class="row text-center">
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/springboot.png" class="responsive-img" />Springboot
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/vue.png" class="responsive-img" />Vue.js
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/bootstrap.png" class="responsive-img" />Bootstrap
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/keras-logo.png" class="responsive-img" />Keras
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/tensorflow-logo-1.png" class="responsive-img" />TensorFlow
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/pytorch-logo.png" class="responsive-img" />PyTorch
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="card">
-          <div class="card-content">
-            <h4 class="brown-text light">Tools</h4>
-            <div class="row text-center">
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/numpy-logo-1-500x500.jpg" class="responsive-img" />NumPy
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/pandas-logo-2-500x500.jpg" class="responsive-img" />Pandas
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/opencv-logo-1-500x500.jpg" class="responsive-img" />OpenCV
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/sk-learn-logo-1-500x500.jpg" class="responsive-img" />scikit-learn
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/matplotlib-logo-1-500x500.jpg" class="responsive-img" />matplotlib
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/linux.png" class="responsive-img" />Linux
-              </div>
-            </div>
-          </div>
-        </div>
-
-        
-        <!-- Other -->
-        <div class="card">
-          <div class="card-content">
-            <h4 class="brown-text light">Other</h4>
-            <div class="row text-center">
-
-
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/git.png" class="responsive-img" />Git
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/aws.png" class="responsive-img" />AWS
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/gcp.png" class="responsive-img" />GCP
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/hadoop.jpg" class="responsive-img" />Hadoop
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/spark.png" class="responsive-img" />Spark
-              </div>
-              <div class="col s4 m2">
-                <img alt="" src="/assets/img/docker.png" class="responsive-img" />Docker
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Achivements -->
-        <!-- <div class="card">
-          <div class="card-content">
-            <h4 class="brown-text light">Certificates</h4>
-            <div class="row text-left">
-              <div class="container">
-                <div class="row">
-                  <div class="col s12 m6 l6">
-                    <div class="card">
-                      <div class="card-image">
-                        <img src="/assets/img/mooc-machine-learning-coursera-800x500.jpg">
-                      </div>
-                      <div class="card-content">
-                        <span class="card-title teal-text">Machine Learning (Stanford)</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col s12 m6 l6">
-                    <div class="card">
-                      <div class="card-image">
-                        <img src="/assets/img/mooc-algorithms-stanford-2-800x500.jpg">
-                      </div>
-                      <div class="card-content">
-                        <span class="card-title teal-text">Algorithms (Stanford)</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
-
-      </div>
-    </section>
-
-    <!-- Seventh Section: Education -->
-    <section id="education" class="section scrollspy">
-      <h3 class="page-title white-text teal">Education</h3>
-      <div class="container">
-        <div class="row">
-          <!-- Education -->
-          <div class=>
-            <div class="card">
-              <div class="card-content">
-                <p>
-                  <span class="card-title"><a href="https://www.lpu.in/" target="_blank" class="teal-text hoverline">Lovely Professional University</a></span>
-                </p>
-                <p class="brown-text">Jalandar, Punjab, India</p>
-                <p>
-                  <b>Degree: </b>Bachelor's Computer Science and Engineering      
-                  <br>
-                  <b>SCGPA: </b>9.0/10
-                </p>
-
-                <ul>
-                  <p>
-                    <b>Relevant Courseworks:</b>
-                  <ul>
-                    <li>Data Science Fundamentals</li>
-                    <li>Operating System</li>
-                    <li>Database Management Systems</li>
-                    <li>Data Structures and Algortihm</li>      
-                    <li>Software Development Life Cycles</li>
-                    <li>Computer networks</li>              
-                  </ul>
-                  <b>Achivements: </b> Class representative - 4 consecutive semesters |  Class Top performer | Showcased on University Poster | Anchored Events
-                  </p>
-
-                </ul>
-              </div>
-            </div>
-
-            
-    </section>
-
-    <!-- Eight Section: Contact -->
-    <section id="contact" class="section scrollspy full-height">
-      <h3 class="page-title white-text teal">Contact</h3>
-      
-      <div class="card">
-        <div class="card-content">
-        <p>
-          <span class="card-title">
-          <a aria-label="Call Aman" data-position="top" data-tooltip="Call Aman"
-            class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i class="fa fa-phone"></i><a
-              aria-label="Call Aman">+91 6200061860</a></a>
-        </p>
-        <p>
-          <a aria-label="Email Aman" href="mailto:namasteamanprasad@gmail.com" target="_blank" data-position="top"
-            data-tooltip="Email Aman" class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-              class="fa fa-envelope"></i><a aria-label="Email Aman" href="mailto:namasteamanprasad@gmail.com"
-              class="hoverline">namasteamanprasad@gmail.com</a></a>
-        </p>
-        <p>
-          <a aria-label="View Aman on GitHub" href="http://github.com/mramanindia" target="_blank"
-            data-position="top" data-tooltip="View Aman on GitHub"
-            class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i class="fa fa-github"></i><a
-              aria-label="Aman on Github" href="http://github.com/mramanindia" class="hoverline"
-              target="_blank">github.com/mramanindia</a></a>
-        </p>
-        <p>
-          <a aria-label="View Aman on LinkedIn" href="http://linkedin.com/in/mramanindia" target="_blank"
-            data-position="top" data-tooltip="View Aman on LinkedIn"
-            class="btn-floating btn-large waves-effect waves-light blue-grey tooltipped"><i
-              class="fa fa-linkedin"></i><a aria-label="Aman on LinkedIn" href="http://linkedin.com/in/mramanindia"
-              class="hoverline" target="_blank">linkedin.com/in/mramanindia</a></a>
-        </p>
-      
+        <section class="contact" id="contact">
+            <h3>Contact</h3>
+            <p>GitHub: <a href="https://github.com/mramanind" target="_blank">https://github.com/mramanind</a></p>
+            <p>Portfolio: <a href="https://mramanindia.github.io/" target="_blank">https://mramanindia.github.io/</a></p>
+            <p>Email: <a href="mailto:amanindiamuz@gmail.com">amanindiamuz@gmail.com</a></p>
+        </section>
     </div>
-    </div>
-    </section>
-  </main>
 
-  <!-- typed.js -->
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script type="text/javascript">
-    var typed = new Typed('.typing',{
-      strings: [" Developer", " Quick Learner", " Smart Guy!"],
-      loop: true,
-      typeSpeed: 80,
-      backSpeed: 40
-    });
-  </script>
-
-
-  <!-- jQuery-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
-  <!-- Materialize - Compiled and minified JavaScript-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/js/materialize.min.js"></script>
-  <script>
-    // Materialize - Initializers
-    $(document).ready(function () {
-      $(".scrollspy").scrollSpy()
-      // Initialize collapse button
-      $(".button-collapse").sideNav({
-        menuWidth: 190, // Default is 240
-        edge: "left", // Choose the horizontal origin
-        closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-      })
-    })
-  </script>
+    <footer>
+        <p>EngineeringLife : )</p>
+    </footer>
 </body>
-
 </html>
