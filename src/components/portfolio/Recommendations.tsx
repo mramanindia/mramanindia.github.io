@@ -1,7 +1,22 @@
+import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Quote, Linkedin } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Quote, Linkedin, ChevronDown } from "lucide-react";
+
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mq.matches);
+    const handler = () => setIsMobile(mq.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+  return isMobile;
+};
 
 const Recommendations = () => {
+  const isMobile = useIsMobile();
   const recommendations = [
     {
       name: "Vinay Kornapalli",
@@ -19,7 +34,7 @@ const Recommendations = () => {
 
   return (
     <section id="recommendations" className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-50/50">
-      <div className="container mx-auto max-w-4xl">
+      <div className="container mx-auto max-w-[68rem]">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f] mb-4 tracking-tight">
             Recommendations
@@ -29,32 +44,68 @@ const Recommendations = () => {
           </p>
         </div>
 
-        <div className="space-y-8">
+        <div className="grid sm:grid-cols-2 gap-6">
           {recommendations.map((rec, index) => (
             <Card
               key={index}
               className="liquid-glass card-hover rounded-2xl border-white/70"
             >
               <CardContent className="p-6 sm:p-8">
-                <Quote className="h-10 w-10 text-[#0071e3]/30 mb-4" />
-                <blockquote className="text-[#6e6e73] leading-relaxed text-lg mb-6">
-                  "{rec.text}"
-                </blockquote>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="font-semibold text-[#1d1d1f]">{rec.name}</p>
-                    <p className="text-sm text-[#86868b]">{rec.role}</p>
-                  </div>
-                  <a
-                    href={rec.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-[#0071e3] hover:underline text-sm font-medium"
-                  >
-                    <Linkedin className="h-5 w-5" />
-                    View on LinkedIn
-                  </a>
-                </div>
+                {isMobile ? (
+                  <Collapsible defaultOpen={false}>
+                    <div className="flex flex-col gap-3">
+                      <div className="flex justify-between items-start gap-2">
+                        <div>
+                          <p className="font-semibold text-[#1d1d1f]">{rec.name}</p>
+                          <p className="text-sm text-[#86868b]">{rec.role}</p>
+                        </div>
+                        <CollapsibleTrigger asChild>
+                          <button className="flex items-center gap-1.5 text-sm font-medium text-[#0071e3] hover:underline shrink-0">
+                            View more
+                            <ChevronDown className="h-4 w-4" />
+                          </button>
+                        </CollapsibleTrigger>
+                      </div>
+                      <CollapsibleContent>
+                        <Quote className="h-8 w-8 text-[#0071e3]/30 mb-2" />
+                        <blockquote className="text-[#6e6e73] leading-relaxed text-sm mb-4">
+                          "{rec.text}"
+                        </blockquote>
+                        <a
+                          href={rec.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 text-[#0071e3] hover:underline text-sm font-medium"
+                        >
+                          <Linkedin className="h-4 w-4" />
+                          View on LinkedIn
+                        </a>
+                      </CollapsibleContent>
+                    </div>
+                  </Collapsible>
+                ) : (
+                  <>
+                    <Quote className="h-10 w-10 text-[#0071e3]/30 mb-4" />
+                    <blockquote className="text-[#6e6e73] leading-relaxed text-lg mb-6">
+                      "{rec.text}"
+                    </blockquote>
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="font-semibold text-[#1d1d1f]">{rec.name}</p>
+                        <p className="text-sm text-[#86868b]">{rec.role}</p>
+                      </div>
+                      <a
+                        href={rec.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-[#0071e3] hover:underline text-sm font-medium"
+                      >
+                        <Linkedin className="h-5 w-5" />
+                        View on LinkedIn
+                      </a>
+                    </div>
+                  </>
+                )}
               </CardContent>
             </Card>
           ))}

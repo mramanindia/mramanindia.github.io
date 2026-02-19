@@ -1,7 +1,80 @@
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
-const Experience = () => {
-  const experiences = [
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mq.matches);
+    const handler = () => setIsMobile(mq.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+  return isMobile;
+};
+
+type ExperienceItem = {
+  company: string;
+  position: string;
+  duration: string;
+  location: string;
+  achievements: (string | JSX.Element)[];
+  skills: string[];
+};
+
+const ExpandedExperienceCard = ({ exp }: { exp: ExperienceItem }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <Collapsible open={open} onOpenChange={setOpen}>
+      <CardHeader className="pb-2">
+        <div className="flex flex-col gap-2">
+          <div className="flex justify-between items-start gap-2">
+            <CardTitle className="text-lg text-[#1d1d1f] font-semibold">
+              {exp.company}
+            </CardTitle>
+            <span className="text-xs font-medium text-slate-600 liquid-glass-tag px-3 py-1.5 rounded-full shrink-0">
+              {exp.duration}
+            </span>
+          </div>
+          <p className="text-sm font-medium text-[#0071e3]">{exp.position}</p>
+          <p className="text-xs text-[#86868b]">{exp.location}</p>
+          <CollapsibleTrigger asChild>
+            <button className="flex items-center gap-1.5 text-sm font-medium text-[#0071e3] hover:underline mt-2 w-fit">
+              {open ? "View less" : "View details"}
+              {open ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+            </button>
+          </CollapsibleTrigger>
+        </div>
+      </CardHeader>
+      <CollapsibleContent>
+        <CardContent className="pt-0">
+          <ul className="space-y-3 mb-4">
+            {exp.achievements.map((achievement, i) => (
+              <li key={i} className="flex items-start gap-3 text-[#6e6e73] text-sm">
+                <span className="text-[#0071e3] mt-1.5 text-xs shrink-0">●</span>
+                <span>{achievement}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="flex flex-wrap gap-2">
+            {exp.skills.map((skill) => (
+              <span
+                key={skill}
+                className="px-2.5 py-1 liquid-glass-tag text-slate-600 rounded-lg text-xs font-medium"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </CardContent>
+      </CollapsibleContent>
+    </Collapsible>
+  );
+};
+
+const experiences: ExperienceItem[] = [
     {
       company: "Noveum.ai",
       position: "Founding AI Engineer (Senior AI Engineer)",
@@ -45,6 +118,9 @@ const Experience = () => {
     }
   ];
 
+const Experience = () => {
+  const isMobile = useIsMobile();
+
   return (
     <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8">
       <div className="container mx-auto max-w-6xl">
@@ -63,42 +139,48 @@ const Experience = () => {
               key={index}
               className="liquid-glass card-hover rounded-2xl border-white/70"
             >
-              <CardHeader>
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
-                  <div>
-                    <CardTitle className="text-xl text-[#1d1d1f] font-semibold">
-                      {exp.position}
-                    </CardTitle>
-                    <p className="text-lg font-medium text-[#0071e3] mt-1">
-                      {exp.company}
-                    </p>
-                    <p className="text-sm text-[#86868b] mt-0.5">{exp.location}</p>
-                  </div>
-                  <span className="text-sm font-medium text-slate-600 liquid-glass-tag px-4 py-2 rounded-full">
-                    {exp.duration}
-                  </span>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3 mb-6">
-                  {exp.achievements.map((achievement, i) => (
-                    <li key={i} className="flex items-start gap-3 text-[#6e6e73]">
-                      <span className="text-[#0071e3] mt-1.5 text-xs">●</span>
-                      <span>{achievement}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex flex-wrap gap-2">
-                  {exp.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1 liquid-glass-tag text-slate-600 rounded-xl text-xs font-medium"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </CardContent>
+              {isMobile ? (
+                <ExpandedExperienceCard exp={exp} />
+              ) : (
+                <>
+                  <CardHeader>
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
+                      <div>
+                        <CardTitle className="text-xl text-[#1d1d1f] font-semibold">
+                          {exp.position}
+                        </CardTitle>
+                        <p className="text-lg font-medium text-[#0071e3] mt-1">
+                          {exp.company}
+                        </p>
+                        <p className="text-sm text-[#86868b] mt-0.5">{exp.location}</p>
+                      </div>
+                      <span className="text-sm font-medium text-slate-600 liquid-glass-tag px-4 py-2 rounded-full">
+                        {exp.duration}
+                      </span>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-3 mb-6">
+                      {exp.achievements.map((achievement, i) => (
+                        <li key={i} className="flex items-start gap-3 text-[#6e6e73]">
+                          <span className="text-[#0071e3] mt-1.5 text-xs">●</span>
+                          <span>{achievement}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="flex flex-wrap gap-2">
+                      {exp.skills.map((skill) => (
+                        <span
+                          key={skill}
+                          className="px-3 py-1 liquid-glass-tag text-slate-600 rounded-xl text-xs font-medium"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </CardContent>
+                </>
+              )}
             </Card>
           ))}
         </div>

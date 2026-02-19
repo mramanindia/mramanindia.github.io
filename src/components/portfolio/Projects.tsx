@@ -1,7 +1,22 @@
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ExternalLink } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { ExternalLink, ChevronDown } from "lucide-react";
+
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mq.matches);
+    const handler = () => setIsMobile(mq.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+  return isMobile;
+};
 
 const Projects = () => {
+  const isMobile = useIsMobile();
   const projects = [
     {
       title: "Sunnom — Daily journal and Companionship Application",
@@ -41,123 +56,133 @@ const Projects = () => {
     }
   ];
 
-  const achievements = [
-    <span key="noveum">Published <a href="https://pypi.org/project/noveum-trace/" target="_blank" rel="noopener noreferrer" className="text-[#0071e3] hover:underline">Noveum Trace SDK</a> on PyPI</span>,
-    <span key="promptval">Published <a href="https://pypi.org/project/promptval/" target="_blank" rel="noopener noreferrer" className="text-[#0071e3] hover:underline">PromptVal</a> on PyPI</span>,
-    "Hackathon Winner — HyBrid Search (LLM-RAG search engine)",
-    <span key="dspy">Technical blog on <a href="https://medium.com/@mramanindia" target="_blank" rel="noopener noreferrer" className="text-[#0071e3] hover:underline">Medium</a></span>,
-
-    <span key="sunnom">Founder — <a href="https://sunnom.in" target="_blank" rel="noopener noreferrer" className="text-[#0071e3] hover:underline">Sunnom</a> mental wellness platform</span>
-  ];
-
   return (
     <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-50/50">
-      <div className="container mx-auto max-w-6xl">
+      <div className="container mx-auto max-w-[68rem]">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-[#1d1d1f] mb-4 tracking-tight">
-            Projects & Achievements
+            Projects
           </h2>
           <p className="text-[#6e6e73] max-w-2xl mx-auto">
             Building the future of AI agents
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 mb-16">
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-[#1d1d1f] tracking-tight">
-              Featured Projects
-            </h3>
-            {projects.map((project, index) => (
-              <Card
-                key={index}
-                className="liquid-glass card-hover rounded-2xl border-white/70"
-              >
-                <CardHeader>
-                  <div className="flex justify-between items-start gap-4">
-                    <div className="flex-1">
-                      <CardTitle className="text-lg text-[#1d1d1f] font-semibold">
-                        {project.url ? (
-                          <a
-                            href={project.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:text-[#0071e3] transition-colors inline-flex items-center gap-1.5 group"
-                          >
-                            {project.title}
-                            <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                          </a>
-                        ) : (
-                          project.title
-                        )}
-                      </CardTitle>
-                      <div className="flex flex-col sm:flex-row sm:gap-4 gap-1 mt-2">
-                        <span className="text-sm text-[#86868b]">{project.period}</span>
-                        <span className="text-sm font-medium text-[#0071e3]">
-                          {project.type}
+        <div className="grid sm:grid-cols-2 gap-6">
+          {projects.map((project, index) => (
+            <Card
+              key={index}
+              className="liquid-glass card-hover rounded-2xl border-white/70"
+            >
+              {isMobile ? (
+                <Collapsible defaultOpen={false}>
+                  <CardHeader className="pb-2">
+                    <div className="flex flex-col gap-2">
+                      <div className="flex justify-between items-start gap-2">
+                        <CardTitle className="text-base text-[#1d1d1f] font-semibold">
+                          {project.title}
+                        </CardTitle>
+                        <span className="text-xs font-medium px-2.5 py-1 liquid-glass-tag text-slate-600 rounded-full shrink-0">
+                          {project.status}
                         </span>
                       </div>
+                      <div className="flex flex-wrap gap-2 text-xs text-[#86868b]">
+                        <span>{project.period}</span>
+                        <span className="text-[#0071e3] font-medium">{project.type}</span>
+                      </div>
+                      {project.url && (
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-sm font-medium text-[#0071e3] hover:underline w-fit"
+                        >
+                          Visit <ExternalLink className="h-3.5 w-3.5" />
+                        </a>
+                      )}
+                      <CollapsibleTrigger asChild>
+                        <button className="flex items-center gap-1.5 text-sm font-medium text-[#0071e3] hover:underline w-fit">
+                          View details
+                          <ChevronDown className="h-4 w-4" />
+                        </button>
+                      </CollapsibleTrigger>
                     </div>
-                    <span className="text-xs font-medium px-3 py-1.5 liquid-glass-tag text-slate-600 rounded-full">
-                      {project.status}
-                    </span>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-[#6e6e73] mb-4">{project.description}</p>
-                  {project.url && (
-                    <a
-                      href={project.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm font-medium text-[#0071e3] hover:underline mb-4"
-                    >
-                      Visit project <ExternalLink className="h-4 w-4" />
-                    </a>
-                  )}
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-3 py-1 liquid-glass-tag text-slate-600 rounded-xl text-xs font-medium"
-                      >
-                        {tech}
+                  </CardHeader>
+                  <CollapsibleContent>
+                    <CardContent className="pt-0">
+                      <p className="text-[#6e6e73] text-sm mb-4">{project.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tech.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-2.5 py-1 liquid-glass-tag text-slate-600 rounded-lg text-xs font-medium"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </CollapsibleContent>
+                </Collapsible>
+              ) : (
+                <>
+                  <CardHeader>
+                    <div className="flex justify-between items-start gap-4">
+                      <div className="flex-1">
+                        <CardTitle className="text-lg text-[#1d1d1f] font-semibold">
+                          {project.url ? (
+                            <a
+                              href={project.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:text-[#0071e3] transition-colors inline-flex items-center gap-1.5 group"
+                            >
+                              {project.title}
+                              <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </a>
+                          ) : (
+                            project.title
+                          )}
+                        </CardTitle>
+                        <div className="flex flex-col sm:flex-row sm:gap-4 gap-1 mt-2">
+                          <span className="text-sm text-[#86868b]">{project.period}</span>
+                          <span className="text-sm font-medium text-[#0071e3]">
+                            {project.type}
+                          </span>
+                        </div>
+                      </div>
+                      <span className="text-xs font-medium px-3 py-1.5 liquid-glass-tag text-slate-600 rounded-full">
+                        {project.status}
                       </span>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-[#1d1d1f] tracking-tight">
-              Achievements
-            </h3>
-            <Card className="liquid-glass card-hover rounded-2xl border-white/70">
-              <CardContent className="p-6">
-                <ul className="space-y-4">
-                  {achievements.map((achievement, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <span className="text-[#0071e3] mt-1 text-sm">✦</span>
-                      <span className="text-[#6e6e73]">{achievement}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-[#6e6e73] mb-4">{project.description}</p>
+                    {project.url && (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-[#0071e3] hover:underline mb-4"
+                      >
+                        Visit project <ExternalLink className="h-4 w-4" />
+                      </a>
+                    )}
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 liquid-glass-tag text-slate-600 rounded-xl text-xs font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </CardContent>
+                </>
+              )}
             </Card>
-
-            <Card className="liquid-glass card-hover rounded-2xl border-white/70">
-              <CardContent className="p-6 text-center">
-                <h4 className="font-semibold text-[#1d1d1f] mb-2">Education</h4>
-                <p className="text-[#0071e3] font-medium">Lovely Professional University</p>
-                <p className="text-sm text-[#6e6e73] mt-1">
-                  Bachelor of Technology in Computer Science and Engineering
-                </p>
-                <p className="text-sm text-[#6e6e73]">CGPA: 9.0/10 | CR — 4 consecutive semesters</p>
-                <p className="text-xs text-[#86868b] mt-2">Punjab, India</p>
-              </CardContent>
-            </Card>
-          </div>
+          ))}
         </div>
       </div>
     </section>

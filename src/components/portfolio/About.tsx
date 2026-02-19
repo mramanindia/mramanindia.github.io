@@ -1,6 +1,22 @@
+import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { ChevronDown } from "lucide-react";
+
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mq.matches);
+    const handler = () => setIsMobile(mq.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+  return isMobile;
+};
 
 const About = () => {
+  const isMobile = useIsMobile();
   const skills = {
     "Languages": ["Python", "Java", "C++"],
     "AI/ML": [
@@ -116,21 +132,51 @@ const About = () => {
                 key={category}
                 className="liquid-glass card-hover rounded-2xl border-white/70"
               >
-                <CardContent className="p-6">
-                  <h4 className="font-semibold text-[#1d1d1f] mb-3 text-sm uppercase tracking-wider text-slate-500">
-                    {category}
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {skillList.map((skill) => (
-                      <span
-                        key={skill}
-                        className="px-3 py-1.5 liquid-glass-tag text-slate-600 rounded-xl text-sm font-medium transition-colors"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </CardContent>
+                {isMobile ? (
+                  <Collapsible defaultOpen={false}>
+                    <CardContent className="p-6">
+                      <div className="flex justify-between items-center">
+                        <h4 className="font-semibold text-[#1d1d1f] text-sm uppercase tracking-wider text-slate-500">
+                          {category}
+                        </h4>
+                        <CollapsibleTrigger asChild>
+                          <button className="flex items-center gap-1.5 text-sm font-medium text-[#0071e3] hover:underline">
+                            View skills
+                            <ChevronDown className="h-4 w-4" />
+                          </button>
+                        </CollapsibleTrigger>
+                      </div>
+                      <CollapsibleContent>
+                        <div className="flex flex-wrap gap-2 mt-3">
+                          {skillList.map((skill) => (
+                            <span
+                              key={skill}
+                              className="px-2.5 py-1 liquid-glass-tag text-slate-600 rounded-lg text-xs font-medium"
+                            >
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </CollapsibleContent>
+                    </CardContent>
+                  </Collapsible>
+                ) : (
+                  <CardContent className="p-6">
+                    <h4 className="font-semibold text-[#1d1d1f] mb-3 text-sm uppercase tracking-wider text-slate-500">
+                      {category}
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {skillList.map((skill) => (
+                        <span
+                          key={skill}
+                          className="px-3 py-1.5 liquid-glass-tag text-slate-600 rounded-xl text-sm font-medium transition-colors"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </CardContent>
+                )}
               </Card>
             ))}
           </div>
