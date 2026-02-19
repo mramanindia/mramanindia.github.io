@@ -4,25 +4,37 @@ import Experience from "@/components/portfolio/Experience";
 import Projects from "@/components/portfolio/Projects";
 import Contact from "@/components/portfolio/Contact";
 import Navigation from "@/components/portfolio/Navigation";
+import MouseGradient from "@/components/portfolio/MouseGradient";
 
 const Index = () => {
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="fixed inset-0 -z-10">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gray-800/40 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gray-900/40 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
-        <div className="absolute top-3/4 left-1/2 w-64 h-64 bg-gray-700/40 rounded-full blur-3xl animate-float" style={{animationDelay: '4s'}}></div>
+    <div className="min-h-screen relative">
+      {/* Layer 1: Fluid colors - full screen, vibrant background */}
+      <div className="fixed inset-0 z-0">
+        <MouseGradient />
       </div>
-      
-      <Navigation />
-      <main>
-        <Hero />
-        <About />
-        <Experience />
-        <Projects />
-        <Contact />
-      </main>
+
+      {/* Layer 2: Glass screen - frosted overlay, content on top */}
+      <div
+        className="fixed inset-0 z-10 overflow-y-auto border border-white/30"
+        style={{
+          background: "rgba(255, 255, 255, 0.35)",
+          backdropFilter: "blur(28px) saturate(200%)",
+          WebkitBackdropFilter: "blur(28px) saturate(200%)",
+          boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.5)",
+        }}
+      >
+        <div className="relative min-h-screen">
+          <Navigation />
+          <main>
+            <Hero />
+            <About />
+            <Experience />
+            <Projects />
+            <Contact />
+          </main>
+        </div>
+      </div>
     </div>
   );
 };

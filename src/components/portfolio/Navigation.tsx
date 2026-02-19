@@ -1,9 +1,9 @@
-
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState("hero");
+  const [scrolled, setScrolled] = useState(false);
 
   const navItems = [
     { id: "hero", label: "Home" },
@@ -22,7 +22,8 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map(item => item.id);
+      setScrolled(window.scrollY > 20);
+      const sections = navItems.map((item) => item.id);
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -42,20 +43,27 @@ const Navigation = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-effect">
+    <nav
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        scrolled ? "nav-glass shadow-sm" : "bg-transparent"
+      )}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="font-bold text-xl text-white">Aman Prasad</div>
-          <div className="hidden md:flex space-x-8">
+          <div className="font-semibold text-lg text-[#1d1d1f] tracking-tight">
+            Aman India
+          </div>
+          <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className={cn(
-                  "text-sm font-medium transition-all duration-300 hover:text-white relative",
-                  activeSection === item.id 
-                    ? "text-white after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-0.5 after:bg-white after:rounded-full" 
-                    : "text-white/70"
+                  "text-sm font-medium transition-colors duration-200 relative py-1",
+                  activeSection === item.id
+                    ? "text-[#1d1d1f] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#1d1d1f] after:rounded-full"
+                    : "text-[#86868b] hover:text-[#1d1d1f]"
                 )}
               >
                 {item.label}
