@@ -33,56 +33,76 @@ const MouseGradient = () => {
   const lastSpawnRef = useRef(0);
   const particleIdRef = useRef(0);
 
+  const spawnParticlesAt = (clientX: number, clientY: number, throttle = true) => {
+    const now = Date.now();
+    if (throttle && now - lastSpawnRef.current < 60) return;
+    lastSpawnRef.current = now;
+
+    const newParticles: Particle[] = [];
+    const count = Math.floor(randomBetween(12, 22));
+    for (let i = 0; i < count; i++) {
+      const angle = randomBetween(0, Math.PI * 2);
+      const distance = randomBetween(80, 380);
+      const endX = clientX + Math.cos(angle) * distance;
+      const endY = clientY + Math.sin(angle) * distance;
+      const colorData = COLORS[Math.floor(Math.random() * COLORS.length)];
+      newParticles.push({
+        id: particleIdRef.current++,
+        startX: clientX,
+        startY: clientY,
+        endX,
+        endY,
+        size: randomBetween(20, 65),
+        color: colorData.bg,
+        opacity: colorData.opacity,
+        createdAt: now,
+      });
+    }
+    setParticles((prev) => [...prev, ...newParticles]);
+  };
+
+  // Welcome burst: fluid under character for 3 sec on first load
   useEffect(() => {
-    const spawnParticles = (clientX: number, clientY: number) => {
-      const now = Date.now();
-      if (now - lastSpawnRef.current < 60) return;
-      lastSpawnRef.current = now;
+    if (typeof sessionStorage === "undefined") return;
+    if (sessionStorage.getItem("welcomeFluidShown")) return;
 
-      const newParticles: Particle[] = [];
+    const startWelcomeBurst = () => {
+      const character = document.getElementById("character-source");
+      if (!character) return;
 
-      // Bucket of water dumped - splashes outward in all directions, scatters on floor
-      const count = Math.floor(randomBetween(12, 22));
-      for (let i = 0; i < count; i++) {
-        // Full 360° scatter - water goes everywhere
-        const angle = randomBetween(0, Math.PI * 2);
-        // Irregular distances: some droplets close, some far (organic splash)
-        const distance = randomBetween(80, 380);
-        const endX = clientX + Math.cos(angle) * distance;
-        const endY = clientY + Math.sin(angle) * distance;
-
-        const colorData = COLORS[Math.floor(Math.random() * COLORS.length)];
-
-        newParticles.push({
-          id: particleIdRef.current++,
-          startX: clientX,
-          startY: clientY,
-          endX,
-          endY,
-          size: randomBetween(20, 65),
-          color: colorData.bg,
-          opacity: colorData.opacity,
-          createdAt: now,
-        });
-      }
-
-      setParticles((prev) => [...prev, ...newParticles]);
+      let burstCount = 0;
+      const maxBursts = 25; // ~3 sec at 120ms interval
+      const interval = setInterval(() => {
+        const characterEl = document.getElementById("character-source");
+        if (!characterEl || burstCount >= maxBursts) {
+          clearInterval(interval);
+          sessionStorage.setItem("welcomeFluidShown", "1");
+          return;
+        }
+        const r = characterEl.getBoundingClientRect();
+        const cx = r.left + r.width / 2;
+        const cy = r.top + r.height / 2;
+        // Slight random offset to simulate cursor moving under character
+        const offsetX = randomBetween(-25, 25);
+        const offsetY = randomBetween(-25, 25);
+        spawnParticlesAt(cx + offsetX, cy + offsetY, false);
+        burstCount++;
+      }, 120);
     };
 
+    const timer = setTimeout(startWelcomeBurst, 400);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      spawnParticles(e.clientX, e.clientY);
+      spawnParticlesAt(e.clientX, e.clientY);
     };
-
     const handleTouchMove = (e: TouchEvent) => {
-      if (e.touches.length > 0) {
-        spawnParticles(e.touches[0].clientX, e.touches[0].clientY);
-      }
+      if (e.touches.length > 0) spawnParticlesAt(e.touches[0].clientX, e.touches[0].clientY);
     };
-
     const handleTouchStart = (e: TouchEvent) => {
-      if (e.touches.length > 0) {
-        spawnParticles(e.touches[0].clientX, e.touches[0].clientY);
-      }
+      if (e.touches.length > 0) spawnParticlesAt(e.touches[0].clientX, e.touches[0].clientY);
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
