@@ -2,6 +2,7 @@ import Hero from "@/components/portfolio/Hero";
 import About from "@/components/portfolio/About";
 import Experience from "@/components/portfolio/Experience";
 import Projects from "@/components/portfolio/Projects";
+import Recommendations from "@/components/portfolio/Recommendations";
 import Contact from "@/components/portfolio/Contact";
 import Navigation from "@/components/portfolio/Navigation";
 import MouseGradient from "@/components/portfolio/MouseGradient";
@@ -31,6 +32,7 @@ const Index = () => {
             <About />
             <Experience />
             <Projects />
+            <Recommendations />
             <Contact />
           </main>
         </div>
