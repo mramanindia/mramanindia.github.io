@@ -45,7 +45,7 @@ const About = () => {
                 href="https://noveum.ai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-24 h-24 rounded-xl bg-white border border-slate-200 shadow-sm hover:border-[#0071e3] hover:shadow-md transition-all overflow-hidden"
+                className="flex items-center justify-center w-24 h-24 rounded-2xl liquid-glass hover:shadow-lg transition-all overflow-hidden"
                 title="Noveum.ai"
               >
                 <img
@@ -58,7 +58,7 @@ const About = () => {
                 href="https://yellow.ai"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-24 h-24 rounded-xl bg-white border border-slate-200 shadow-sm hover:border-[#0071e3] hover:shadow-md transition-all overflow-hidden"
+                className="flex items-center justify-center w-24 h-24 rounded-2xl liquid-glass hover:shadow-lg transition-all overflow-hidden"
                 title="Yellow.ai"
               >
                 <img
@@ -71,7 +71,7 @@ const About = () => {
                 href="https://rakuten.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center w-24 h-24 rounded-xl bg-white border border-slate-200 shadow-sm hover:border-[#0071e3] hover:shadow-md transition-all overflow-hidden"
+                className="flex items-center justify-center w-24 h-24 rounded-2xl liquid-glass hover:shadow-lg transition-all overflow-hidden"
                 title="Rakuten"
               >
                 <img
@@ -87,7 +87,7 @@ const About = () => {
                 href="https://noveum.ai/en/docs"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 rounded-full text-sm font-medium shadow-sm hover:border-[#0071e3] hover:text-[#0071e3] transition-colors"
+                className="px-3 py-1.5 liquid-glass text-slate-600 rounded-full text-sm font-medium hover:text-[#0071e3] transition-colors"
               >
                 Noveum — AI agent building & evaluation
               </a>
@@ -95,7 +95,7 @@ const About = () => {
                 href="https://sunnom.in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 rounded-full text-sm font-medium shadow-sm hover:border-[#0071e3] hover:text-[#0071e3] transition-colors"
+                className="px-3 py-1.5 liquid-glass text-slate-600 rounded-full text-sm font-medium hover:text-[#0071e3] transition-colors"
               >
                 Sunnom — Mental Wellness application
               </a>
@@ -103,7 +103,7 @@ const About = () => {
                 href="https://pypi.org/project/promptval/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 rounded-full text-sm font-medium shadow-sm hover:border-[#0071e3] hover:text-[#0071e3] transition-colors"
+                className="px-3 py-1.5 liquid-glass text-slate-600 rounded-full text-sm font-medium hover:text-[#0071e3] transition-colors"
               >
                 PromptVal — PyPI package for prompt validation
               </a>
@@ -114,7 +114,7 @@ const About = () => {
             {Object.entries(skills).map(([category, skillList]) => (
               <Card
                 key={category}
-                className="bg-white border-slate-200/80 shadow-sm card-hover hover:border-slate-200"
+                className="liquid-glass card-hover rounded-2xl border-white/70"
               >
                 <CardContent className="p-6">
                   <h4 className="font-semibold text-[#1d1d1f] mb-3 text-sm uppercase tracking-wider text-slate-500">
@@ -124,7 +124,7 @@ const About = () => {
                     {skillList.map((skill) => (
                       <span
                         key={skill}
-                        className="px-3 py-1.5 bg-slate-50 text-slate-600 rounded-lg text-sm font-medium border border-slate-100 hover:bg-slate-100/80 transition-colors"
+                        className="px-3 py-1.5 liquid-glass-tag text-slate-600 rounded-xl text-sm font-medium transition-colors"
                       >
                         {skill}
                       </span>

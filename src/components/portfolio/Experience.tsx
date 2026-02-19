@@ -61,7 +61,7 @@ const Experience = () => {
           {experiences.map((exp, index) => (
             <Card
               key={index}
-              className="bg-white border-slate-200/80 shadow-sm card-hover hover:border-slate-200"
+              className="liquid-glass card-hover rounded-2xl border-white/70"
             >
               <CardHeader>
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
@@ -74,7 +74,7 @@ const Experience = () => {
                     </p>
                     <p className="text-sm text-[#86868b] mt-0.5">{exp.location}</p>
                   </div>
-                  <span className="text-sm font-medium text-slate-600 bg-slate-100 px-4 py-2 rounded-full">
+                  <span className="text-sm font-medium text-slate-600 liquid-glass-tag px-4 py-2 rounded-full">
                     {exp.duration}
                   </span>
                 </div>
@@ -92,7 +92,7 @@ const Experience = () => {
                   {exp.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1 bg-slate-50 text-slate-600 rounded-lg text-xs font-medium border border-slate-100"
+                      className="px-3 py-1 liquid-glass-tag text-slate-600 rounded-xl text-xs font-medium"
                     >
                       {skill}
                     </span>

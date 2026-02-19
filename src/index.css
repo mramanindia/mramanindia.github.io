@@ -98,6 +98,34 @@
   box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.12);
 }
 
+/* Apple liquid glass UI */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  box-shadow: 
+    0 0 0 1px rgba(0, 0, 0, 0.04),
+    0 4px 24px -4px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+.liquid-glass:hover {
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 
+    0 0 0 1px rgba(0, 0, 0, 0.04),
+    0 12px 40px -12px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Lighter glass for tags/pills */
+.liquid-glass-tag {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: saturate(150%) blur(12px);
+  -webkit-backdrop-filter: saturate(150%) blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
 /* Fluid trail fade out - 2 seconds */
 @keyframes fluid-trail-fade {
   from { opacity: 1; }

@@ -49,7 +49,7 @@ const Contact = () => {
             return (
               <Card
                 key={index}
-                className="bg-white border-slate-200/80 shadow-sm card-hover hover:border-slate-200 group"
+                className="liquid-glass card-hover rounded-2xl border-white/70 group"
               >
                 <CardContent className="p-6">
                   <div className="flex items-center gap-4">
@@ -76,7 +76,7 @@ const Contact = () => {
         </div>
 
         <div className="text-center">
-          <Card className="inline-block bg-white border-slate-200/80 shadow-sm card-hover hover:border-slate-200">
+          <Card className="inline-block liquid-glass card-hover rounded-2xl border-white/70">
             <CardContent className="p-8">
               <h3 className="text-xl font-semibold text-[#1d1d1f] mb-4">
                 Ready to collaborate?

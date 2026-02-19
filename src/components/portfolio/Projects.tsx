@@ -70,7 +70,7 @@ const Projects = () => {
             {projects.map((project, index) => (
               <Card
                 key={index}
-                className="bg-white border-slate-200/80 shadow-sm card-hover hover:border-slate-200"
+                className="liquid-glass card-hover rounded-2xl border-white/70"
               >
                 <CardHeader>
                   <div className="flex justify-between items-start gap-4">
@@ -97,7 +97,7 @@ const Projects = () => {
                         </span>
                       </div>
                     </div>
-                    <span className="text-xs font-medium px-3 py-1.5 bg-slate-100 text-slate-600 rounded-full">
+                    <span className="text-xs font-medium px-3 py-1.5 liquid-glass-tag text-slate-600 rounded-full">
                       {project.status}
                     </span>
                   </div>
@@ -118,7 +118,7 @@ const Projects = () => {
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-1 bg-slate-50 text-slate-600 rounded-lg text-xs font-medium border border-slate-100"
+                        className="px-3 py-1 liquid-glass-tag text-slate-600 rounded-xl text-xs font-medium"
                       >
                         {tech}
                       </span>
@@ -133,7 +133,7 @@ const Projects = () => {
             <h3 className="text-xl font-semibold text-[#1d1d1f] tracking-tight">
               Achievements
             </h3>
-            <Card className="bg-white border-slate-200/80 shadow-sm card-hover hover:border-slate-200">
+            <Card className="liquid-glass card-hover rounded-2xl border-white/70">
               <CardContent className="p-6">
                 <ul className="space-y-4">
                   {achievements.map((achievement, index) => (
@@ -146,7 +146,7 @@ const Projects = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-white border-slate-200/80 shadow-sm card-hover hover:border-slate-200">
+            <Card className="liquid-glass card-hover rounded-2xl border-white/70">
               <CardContent className="p-6 text-center">
                 <h4 className="font-semibold text-[#1d1d1f] mb-2">Education</h4>
                 <p className="text-[#0071e3] font-medium">Lovely Professional University</p>

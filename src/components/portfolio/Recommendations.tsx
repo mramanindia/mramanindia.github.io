@@ -33,7 +33,7 @@ const Recommendations = () => {
           {recommendations.map((rec, index) => (
             <Card
               key={index}
-              className="bg-white border-slate-200/80 shadow-sm card-hover hover:border-slate-200"
+              className="liquid-glass card-hover rounded-2xl border-white/70"
             >
               <CardContent className="p-6 sm:p-8">
                 <Quote className="h-10 w-10 text-[#0071e3]/30 mb-4" />
