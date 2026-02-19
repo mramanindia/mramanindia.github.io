@@ -34,13 +34,11 @@ const MouseGradient = () => {
   const particleIdRef = useRef(0);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
+    const spawnParticles = (clientX: number, clientY: number) => {
       const now = Date.now();
       if (now - lastSpawnRef.current < 60) return;
       lastSpawnRef.current = now;
 
-      const cursorX = e.clientX;
-      const cursorY = e.clientY;
       const newParticles: Particle[] = [];
 
       // Bucket of water dumped - splashes outward in all directions, scatters on floor
@@ -50,15 +48,15 @@ const MouseGradient = () => {
         const angle = randomBetween(0, Math.PI * 2);
         // Irregular distances: some droplets close, some far (organic splash)
         const distance = randomBetween(80, 380);
-        const endX = cursorX + Math.cos(angle) * distance;
-        const endY = cursorY + Math.sin(angle) * distance;
+        const endX = clientX + Math.cos(angle) * distance;
+        const endY = clientY + Math.sin(angle) * distance;
 
         const colorData = COLORS[Math.floor(Math.random() * COLORS.length)];
 
         newParticles.push({
           id: particleIdRef.current++,
-          startX: cursorX,
-          startY: cursorY,
+          startX: clientX,
+          startY: clientY,
           endX,
           endY,
           size: randomBetween(20, 65),
@@ -71,8 +69,30 @@ const MouseGradient = () => {
       setParticles((prev) => [...prev, ...newParticles]);
     };
 
+    const handleMouseMove = (e: MouseEvent) => {
+      spawnParticles(e.clientX, e.clientY);
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        spawnParticles(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    };
+
+    const handleTouchStart = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        spawnParticles(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    };
+
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchstart", handleTouchStart);
+    };
   }, []);
 
   useEffect(() => {
