@@ -4,10 +4,10 @@ import { ExternalLink } from "lucide-react";
 const Projects = () => {
   const projects = [
     {
-      title: "Sunnom — Mental Wellness Application",
+      title: "Sunnom — Daily journal and Companionship Application",
       period: "May 2025 – Present",
-      description: "Designed and developed an end-to-end mental health platform leveraging Agentic AI, LLMs, and RAG pipelines for personalized and scalable support.",
-      tech: ["Python", "FastAPI", "LLMs", "Agentic AI", "Cursor", "Node.js", "MongoDB", "Redis", "Docker", "React"],
+      description: "Designed and built Sunnom, an end-to-end companionship platform leveraging Agentic AI, LLMs, and RAG pipelines for personalized, context-aware support.",
+      tech: ["Python", "FastAPI", "LLMs", "Agentic AI", "Node.js", "PostgreSQL", "Redis", "Docker", "React"],
       status: "Founder",
       type: "Personal Project",
       url: "https://sunnom.in"
