@@ -1,14 +1,16 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ExternalLink } from "lucide-react";
 
 const Projects = () => {
   const projects = [
     {
-      title: "Sunnom — Companionship & Daily Journal",
+      title: "Sunnom — Mental Wellness Application",
       period: "May 2025 – Present",
-      description: "Designed and built an end-to-end companionship platform leveraging Agentic AI, LLMs, and RAG pipelines for personalized, context-aware support.",
-      tech: ["Python", "FastAPI", "LLMs", "Agentic AI", "Node.js", "PostgreSQL", "Redis", "Docker", "React"],
+      description: "Designed and developed an end-to-end mental health platform leveraging Agentic AI, LLMs, and RAG pipelines for personalized and scalable support.",
+      tech: ["Python", "FastAPI", "LLMs", "Agentic AI", "Cursor", "Node.js", "MongoDB", "Redis", "Docker", "React"],
       status: "Founder",
-      type: "Personal Project"
+      type: "Personal Project",
+      url: "https://sunnom.in"
     },
     {
       title: "PromptVal — Prompt Validation & Auto-Optimization",
@@ -16,7 +18,8 @@ const Projects = () => {
       description: "Open-source prompt validation and auto-fix package that analyzes prompts, detects structural and semantic issues, and rewrites them into standardized prompt-engineering formats. Published on PyPI.",
       tech: ["Python", "PyPI", "Prompt Engineering", "LLMs"],
       status: "Open Source",
-      type: "Published Package"
+      type: "Published Package",
+      url: "https://pypi.org/project/promptval/"
     },
     {
       title: "Noveum Trace SDK",
@@ -24,25 +27,27 @@ const Projects = () => {
       description: "Open-source real-time agent observability layer for LangChain, LangGraph, and LiveKit. Auto-captures traces, LLM/tool calls, token usage, cost, and latency with structured span tracking.",
       tech: ["Python", "LangChain", "LangGraph", "LiveKit", "PyPI"],
       status: "Published",
-      type: "Noveum.ai"
+      type: "Noveum.ai",
+      url: "https://pypi.org/project/noveum-trace/"
     },
     {
       title: "HyBrid Search — LLM-RAG Search Engine",
       period: "Feb 2025",
-      description: "Developed a Retrieval-Augmented Generation (RAG) pipeline by scraping content from URLs and PDFs, indexing for both keyword-based and semantic retrieval. Implemented a hybrid search engine combining traditional search with LLM-based contextual understanding.",
+      description: "Developed a Retrieval-Augmented Generation (RAG) pipeline by scraping content from URLs and PDFs, indexing for both keyword-based and semantic retrieval. Implemented a hybrid search engine combining traditional search with LLM-based contextual understanding. Hackathon Winner at Yellow.ai.",
       tech: ["Python", "FastAPI", "Node.js", "LLMs", "RAG", "Web-parsing", "Chunking", "Indexing"],
       status: "Hackathon Winner",
-      type: "Hackathon"
+      type: "Yellow.ai Hackathon",
+      url: "https://yellow.ai"
     }
   ];
 
   const achievements = [
-    "Published Noveum Trace SDK on PyPI",
-    "Published PromptVal on PyPI",
+    <span key="noveum">Published <a href="https://pypi.org/project/noveum-trace/" target="_blank" rel="noopener noreferrer" className="text-[#0071e3] hover:underline">Noveum Trace SDK</a> on PyPI</span>,
+    <span key="promptval">Published <a href="https://pypi.org/project/promptval/" target="_blank" rel="noopener noreferrer" className="text-[#0071e3] hover:underline">PromptVal</a> on PyPI</span>,
     "Hackathon Winner — HyBrid Search (LLM-RAG search engine)",
-    "Technical blog on prompt automation (DSPy)",
-    "Technical blog on SixthSense observability",
-    "Founder — Sunnom companionship platform"
+    <span key="dspy">Technical blog on <a href="https://medium.com/@mramanindia" target="_blank" rel="noopener noreferrer" className="text-[#0071e3] hover:underline">Medium</a></span>,
+
+    <span key="sunnom">Founder — <a href="https://sunnom.in" target="_blank" rel="noopener noreferrer" className="text-[#0071e3] hover:underline">Sunnom</a> mental wellness platform</span>
   ];
 
   return (
@@ -53,7 +58,7 @@ const Projects = () => {
             Projects & Achievements
           </h2>
           <p className="text-[#6e6e73] max-w-2xl mx-auto">
-            Building the future of AI agents and observability
+            Building the future of AI agents
           </p>
         </div>
 
@@ -71,7 +76,19 @@ const Projects = () => {
                   <div className="flex justify-between items-start gap-4">
                     <div className="flex-1">
                       <CardTitle className="text-lg text-[#1d1d1f] font-semibold">
-                        {project.title}
+                        {project.url ? (
+                          <a
+                            href={project.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-[#0071e3] transition-colors inline-flex items-center gap-1.5 group"
+                          >
+                            {project.title}
+                            <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                          </a>
+                        ) : (
+                          project.title
+                        )}
                       </CardTitle>
                       <div className="flex flex-col sm:flex-row sm:gap-4 gap-1 mt-2">
                         <span className="text-sm text-[#86868b]">{project.period}</span>
@@ -87,6 +104,16 @@ const Projects = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-[#6e6e73] mb-4">{project.description}</p>
+                  {project.url && (
+                    <a
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-[#0071e3] hover:underline mb-4"
+                    >
+                      Visit project <ExternalLink className="h-4 w-4" />
+                    </a>
+                  )}
                   <div className="flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
                       <span
@@ -126,7 +153,7 @@ const Projects = () => {
                 <p className="text-sm text-[#6e6e73] mt-1">
                   Bachelor of Technology in Computer Science and Engineering
                 </p>
-                <p className="text-sm text-[#6e6e73]">CGPA: 9.0/10</p>
+                <p className="text-sm text-[#6e6e73]">CGPA: 9.0/10 | CR — 4 consecutive semesters</p>
                 <p className="text-xs text-[#86868b] mt-2">Punjab, India</p>
               </CardContent>
             </Card>

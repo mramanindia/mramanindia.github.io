@@ -2,16 +2,15 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const About = () => {
   const skills = {
-    "Languages": ["Python", "Java"],
-    "Agentic AI": [
-      "Agent System Architecture", "Multi-Agent Orchestration", "AI Agent Observability",
-      "Trace-Driven Evaluation", "LLM-as-Judge", "Tool/Function Calling",
-      "Memory-Augmented Agents", "Prompt Optimization", "LangChain", "LangGraph"
+    "Languages": ["Python", "Java", "C++"],
+    "AI/ML": [
+      "LLMs (OpenAI GPT, BERT, Transformers)", "RAG", "NLP", "Agentic AI",
+      "LangChain", "LangGraph", "MCP Server", "PyTorch", "TensorFlow",
+      "Scikit-learn", "Hugging Face", "FAISS", "Elasticsearch"
     ],
-    "Infrastructure": [
-      "FastAPI", "Microservices", "Async Workflows", "Docker", "Kubernetes",
-      "AWS", "ClickHouse", "Redis", "CI/CD", "Linux", "Git"
-    ]
+    "Data Engineering": ["Kafka", "Spark", "Hadoop", "Hive", "Redis", "MongoDB", "MySQL", "Data Lakes"],
+    "Cloud & MLOps": ["AWS (EC2, S3, SageMaker, Lambda)", "GCP", "Azure", "Docker", "Kubernetes", "CI/CD"],
+    "Software Engineering": ["FastAPI", "Flask", "Django", "SpringBoot", "Node.js", "React", "GraphQL", "Linux", "Git"]
   };
 
   return (
@@ -22,30 +21,92 @@ const About = () => {
             About Me
           </h2>
           <p className="text-[#6e6e73] max-w-2xl mx-auto">
-            AI Engineer building agent observability and evaluation systems
+            AI Engineer engineering life; Building AI agents and Agentic systems
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-6">
             <h3 className="text-2xl font-semibold text-[#1d1d1f] tracking-tight">
-              Founding AI Engineer at Noveum.ai
+              "Zero to One" AI Engineer
             </h3>
             <p className="text-[#6e6e73] leading-relaxed text-lg">
-              Building the core engine powering AI agent tracing, LLM-as-judge evaluation,
-              and synthetic testing. Previously scaled RAG pipelines at Yellow.ai and
-              contributed to observability infrastructure at Rakuten.
+              Building AI agents and Agentic systems from ground up.
+              I architect and build production-grade AI agents with complete Agent observability.
             </p>
+            <ul className="text-[#6e6e73] leading-relaxed text-lg list-disc list-outside pl-6 space-y-2">
+              <li>Built AI agents at Noveum.ai that monitor and fix AI agents as a founding AI Engineer.</li>
+              <li>Built the Chatbot Engine at Yellow.ai that scales RAG pipelines and powers AI agents.</li>
+              <li>Built AI infrastructure at Rakuten that enables AI agent development.</li>
+            </ul>
+
+            <div className="flex items-center gap-6 pt-6">
+              <a
+                href="https://noveum.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-24 h-24 rounded-xl bg-white border border-slate-200 shadow-sm hover:border-[#0071e3] hover:shadow-md transition-all overflow-hidden"
+                title="Noveum.ai"
+              >
+                <img
+                  src="/noveum-logo.png"
+                  alt="Noveum.ai"
+                  className="w-full h-full object-contain p-2"
+                />
+              </a>
+              <a
+                href="https://yellow.ai"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-24 h-24 rounded-xl bg-white border border-slate-200 shadow-sm hover:border-[#0071e3] hover:shadow-md transition-all overflow-hidden"
+                title="Yellow.ai"
+              >
+                <img
+                  src="/yellow-logo.png"
+                  alt="Yellow.ai"
+                  className="w-full h-full object-contain p-2"
+                />
+              </a>
+              <a
+                href="https://rakuten.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-24 h-24 rounded-xl bg-white border border-slate-200 shadow-sm hover:border-[#0071e3] hover:shadow-md transition-all overflow-hidden"
+                title="Rakuten"
+              >
+                <img
+                  src="/rakuten-logo.png"
+                  alt="Rakuten"
+                  className="w-full h-full object-contain p-2"
+                />
+              </a>
+            </div>
+           
             <div className="flex flex-wrap gap-2 pt-4">
-              <span className="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 rounded-full text-sm font-medium shadow-sm">
-                Noveum Trace SDK — Open-source agent observability
-              </span>
-              <span className="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 rounded-full text-sm font-medium shadow-sm">
-                Sunnom — Agentic AI companionship platform
-              </span>
-              <span className="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 rounded-full text-sm font-medium shadow-sm">
+              <a
+                href="https://noveum.ai/en/docs"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 rounded-full text-sm font-medium shadow-sm hover:border-[#0071e3] hover:text-[#0071e3] transition-colors"
+              >
+                Noveum — AI agent building & evaluation
+              </a>
+              <a
+                href="https://sunnom.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 rounded-full text-sm font-medium shadow-sm hover:border-[#0071e3] hover:text-[#0071e3] transition-colors"
+              >
+                Sunnom — Mental Wellness application
+              </a>
+              <a
+                href="https://pypi.org/project/promptval/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 rounded-full text-sm font-medium shadow-sm hover:border-[#0071e3] hover:text-[#0071e3] transition-colors"
+              >
                 PromptVal — PyPI package for prompt validation
-              </span>
+              </a>
             </div>
           </div>
 

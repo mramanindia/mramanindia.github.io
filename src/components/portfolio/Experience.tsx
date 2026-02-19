@@ -6,16 +6,18 @@ const Experience = () => {
       company: "Noveum.ai",
       position: "Founding AI Engineer (Senior AI Engineer)",
       duration: "Oct 2025 – Present",
-      location: "Remote - San Francisco, California",
+      location: "Remote - San Francisco, California, United States",
       achievements: [
-        "Built the core engine powering Noveum.ai (Noveum Trace SDK, NovaEval, NovaPilot, NovaGen) — end-to-end AI agent tracing, LLM-as-judge evaluation, score-driven failure analysis, and synthetic testing",
-        "Architected and published open-source Noveum Trace SDK (PyPI), a real-time agent observability layer for LangChain, LangGraph, and LiveKit with structured span tracking",
-        "Built NovaEval, a hybrid LLM and rule-based evaluation engine with 74+ metrics across RAG quality, tool selection, security; reduced evaluation costs by 50% via batched LLM optimization",
-        "Engineered NovaPilot for AI-driven evaluation analytics and automated remediation; optimized report generation by 80% through parallel processing",
-        "Engineered NovaGen, a synthetic multi-persona testing agent with 7+ parallel personas and <2s per-turn latency"
+        <>Built the core engine powering <strong>Noveum.ai</strong> (<strong>Noveum Trace SDK</strong>, <strong>NovaEval</strong>, <strong>NovaPilot</strong>, <strong>NovaGen</strong>, <strong>Noveum-SDK</strong>), delivering end-to-end AI agent tracing, LLM-as-judge evaluation, score-driven failure analysis with automated remediation, and comprehensive pre-production synthetic testing (<a href="https://noveum.ai/en/docs" target="_blank" rel="noopener noreferrer" className="text-[#0071e3] hover:underline">Docs</a>).</>,
+        <>Architected and published the open-source <strong>Noveum Trace SDK</strong> (<a href="https://pypi.org/project/noveum-trace/" target="_blank" rel="noopener noreferrer" className="text-[#0071e3] hover:underline">PyPI</a>), a real-time agent observability layer requiring minimal integration with LangChain, LangGraph, and LiveKit; auto-captures traces, LLM/tool calls, token usage, cost, and latency with structured span tracking to power evaluation and optimization workflows.</>,
+        <>Built <strong>NovaEval</strong>, a hybrid LLM and rule-based evaluation engine implementing <strong>74+ evaluation metrics</strong> across RAG quality, tool selection, security checks, voice evaluations, and system prompt validation; reduced evaluation costs by <strong>50%</strong> via batched LLM API optimization.</>,
+        <>Engineered <strong>NovaPilot</strong>, an AI-driven evaluation analytics engine that analyzes patterns in agent evaluations and provides automated remediation recommendations; optimized report generation time by <strong>80%</strong> through parallel score processing and batched LLM execution.</>,
+        <>Engineered <strong>NovaGen</strong>, a synthetic multi-persona testing agent running <strong>7+ parallel personas</strong> with <strong>&lt;2s</strong> per-turn latency using trace-aware adaptive questioning; delivers comprehensive node-level coverage and behavioral validation beyond manual testing limits.</>,
+        <><strong>Tech Stack:</strong> Python, Agentic Orchestration (LangChain, LangGraph, Custom Controllers), RAG, LLM APIs (Gemini, Anthropic, OpenAI), Prompt Engineering, FastAPI, Async Workflows, Docker, Kubernetes, AWS</>
       ],
       skills: ["Python", "LangChain", "LangGraph", "Agentic AI", "FastAPI", "Docker", "Kubernetes", "AWS", "RAG", "LLM APIs"]
     },
+    
     {
       company: "Yellow.ai",
       position: "AI Engineer - NLP team",
@@ -51,7 +53,7 @@ const Experience = () => {
             Experience
           </h2>
           <p className="text-[#6e6e73] max-w-2xl mx-auto">
-            Building AI agent infrastructure and observability systems
+            Building AI agents and Agentic AI systems
           </p>
         </div>
 

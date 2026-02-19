@@ -19,8 +19,8 @@ const Contact = () => {
     {
       icon: Linkedin,
       label: "LinkedIn",
-      value: "linkedin.com/in/amanindia",
-      href: "https://linkedin.com/in/amanindia"
+      value: "linkedin.com/in/mramanindia",
+      href: "https://linkedin.com/in/mramanindia"
     },
     {
       icon: Github,
@@ -38,7 +38,7 @@ const Contact = () => {
             Get In Touch
           </h2>
           <p className="text-lg text-[#6e6e73] max-w-2xl mx-auto">
-            Interested in AI agent infrastructure, observability, or collaboration?
+            Interested in AI agent building, Agentic AI, or collaboration?
             Let's connect!
           </p>
         </div>
@@ -83,7 +83,7 @@ const Contact = () => {
               </h3>
               <p className="text-[#6e6e73] mb-6 max-w-md mx-auto">
                 Whether you have a project in mind or want to discuss AI agents and
-                observability, I'd love to hear from you.
+                Agentic AI, I'd love to hear from you.
               </p>
               <Button
                 size="lg"

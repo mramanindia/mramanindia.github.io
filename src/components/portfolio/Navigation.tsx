@@ -69,6 +69,14 @@ const Navigation = () => {
                 {item.label}
               </button>
             ))}
+            <a
+              href="https://sunnom.in"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium text-[#0071e3] hover:underline"
+            >
+              Visit Sunnom
+            </a>
           </div>
         </div>
       </div>

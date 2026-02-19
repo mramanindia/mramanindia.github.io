@@ -97,3 +97,29 @@
   transform: translateY(-2px);
   box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.12);
 }
+
+/* Fluid trail fade out - 2 seconds */
+@keyframes fluid-trail-fade {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.animate-fluid-trail {
+  animation: fluid-trail-fade 2s linear forwards;
+}
+
+/* Scattered fluid - moves and fades in 2s */
+@keyframes fluid-scatter {
+  from {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  to {
+    transform: translate(var(--dx, 0), var(--dy, 0));
+    opacity: 0;
+  }
+}
+
+.animate-fluid-scatter {
+  animation: fluid-scatter 2s ease-out forwards;
+}

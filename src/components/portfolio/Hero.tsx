@@ -14,6 +14,7 @@ const Hero = () => {
       <div className="text-center max-w-4xl mx-auto z-10">
         <div className="mb-6 opacity-0 animate-fade-in-up delay-100 flex flex-col items-center justify-center gap-5 sm:gap-6 sm:mb-8">
           <img
+            id="character-source"
             src="/aman_character.png"
             alt="Aman India"
             className="w-[138px] h-[138px] sm:w-[161px] sm:h-[161px] object-cover object-top flex-shrink-0"
@@ -28,9 +29,9 @@ const Hero = () => {
         <p className="text-lg sm:text-xl text-[#6e6e73] mb-12 max-w-2xl mx-auto leading-relaxed opacity-0 animate-fade-in-up delay-400">
           Specializing in{" "}
           <span className="text-[#1d1d1f] font-medium">Agentic AI</span>,{" "}
-          <span className="text-[#1d1d1f] font-medium">LLM observability</span>, and{" "}
+          <span className="text-[#1d1d1f] font-medium">AI agent building</span>, and{" "}
           <span className="text-[#1d1d1f] font-medium">RAG systems</span>.
-          Building scalable AI agent infrastructure with LangChain, LangGraph, and modern tooling.
+          Engineering AI agents with LangChain, LangGraph, and modern tooling.
         </p>
 
         <div className="opacity-0 animate-fade-in-up delay-500 flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
@@ -58,7 +59,7 @@ const Hero = () => {
               className="rounded-full border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-[#1d1d1f] transition-all duration-300 h-11 w-11"
               asChild
             >
-              <a href="https://linkedin.com/in/amanindia" target="_blank" rel="noopener noreferrer">
+              <a href="https://linkedin.com/in/mramanindia" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-5 w-5" />
               </a>
             </Button>
