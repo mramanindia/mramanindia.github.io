@@ -16,15 +16,15 @@ const Index = () => {
         <MouseGradient />
       </div>
 
-      {/* Layer 2: Glass screen - frosted overlay, content on top */}
+      {/* Layer 2: Glass screen - frosted overlay, content on top (written on glass) */}
       <div
         id="main-scroll"
-        className="fixed inset-0 z-10 overflow-y-auto overflow-x-hidden border border-white/30"
+        className="fixed inset-0 z-10 overflow-y-auto overflow-x-hidden"
         style={{
-          background: "rgba(255, 255, 255, 0.35)",
-          backdropFilter: "blur(28px) saturate(200%)",
-          WebkitBackdropFilter: "blur(28px) saturate(200%)",
-          boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.5)",
+          background: "rgba(255, 255, 255, 0.12)",
+          backdropFilter: "blur(40px) saturate(180%)",
+          WebkitBackdropFilter: "blur(40px) saturate(180%)",
+          boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.25)",
         }}
       >
         <div className="relative min-h-screen">

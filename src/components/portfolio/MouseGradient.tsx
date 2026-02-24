@@ -52,7 +52,7 @@ const MouseGradient = () => {
         startY: clientY,
         endX,
         endY,
-        size: randomBetween(20, 65),
+        size: randomBetween(10, 52),
         color: colorData.bg,
         opacity: colorData.opacity,
         createdAt: now,
